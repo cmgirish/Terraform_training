@@ -8,6 +8,11 @@ data "aws_ami" "ubuntu" {
 }
 data "aws_security_group" "sg" {
   vpc_id = "vpc-0ce7889ae8fafd3f6"
+  filter {
+  name = "tag:Name"
+  values = ["kul"]
+ 
+ }
 }
 data "template_file" "user_data" {
   template = file("./user_data.tpl")
